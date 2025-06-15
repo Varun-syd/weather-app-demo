@@ -20,10 +20,11 @@ pipeline {
             }
         }
         stage('Docker Run') {
-            steps {
-                echo '🚀 Running Docker container...'
-                sh 'docker run -d -p 8080:80 --name weather-container weather-app:latest'
-            }
-        }
+    steps {
+        echo '🚀 Running Docker container...'
+        sh 'docker run -d -p 8081:80 --name weather-container weather-app:latest'
     }
 }
+}
+}
+      
