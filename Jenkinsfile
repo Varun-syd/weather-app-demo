@@ -13,11 +13,17 @@ pipeline {
                 sh 'ls -l'
             }
         }
-        stage('Success') {
+        stage('Docker Build') {
             steps {
-                echo '✅ Build completed successfully!'
+                echo '🐳 Building Docker image...'
+                sh 'docker build -t weather-app:latest .'
+            }
+        }
+        stage('Docker Run') {
+            steps {
+                echo '🚀 Running Docker container...'
+                sh 'docker run -d -p 8080:80 --name weather-container weather-app:latest'
             }
         }
     }
 }
-
